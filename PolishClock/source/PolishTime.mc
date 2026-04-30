@@ -96,12 +96,30 @@ module PolishTime {
         return hourStr + " " + minStr;
     }
 
-    // Short Polish month abbreviations (genitive, as typically used in dates)
-    function getMonthAbbr(month as Number) as String {
+    // Polish day-of-week names (nominative)
+    // dayOfWeek: 0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat
+    function getDayName(dayOfWeek as Number) as String {
+        var days = [
+            "niedziela",    // 0 Sun
+            "poniedziałek", // 1 Mon
+            "wtorek",       // 2 Tue
+            "środa",        // 3 Wed
+            "czwartek",     // 4 Thu
+            "piątek",       // 5 Fri
+            "sobota"        // 6 Sat
+        ] as Array<String>;
+        if (dayOfWeek >= 0 && dayOfWeek <= 6) {
+            return days[dayOfWeek];
+        }
+        return "???";
+    }
+
+    // Full Polish month names (nominative)
+    function getMonthName(month as Number) as String {
         var months = [
-            "sty", "lut", "mar", "kwi",
-            "maj", "cze", "lip", "sie",
-            "wrz", "paź", "lis", "gru"
+            "styczeń", "luty", "marzec", "kwiecień",
+            "maj", "czerwiec", "lipiec", "sierpień",
+            "wrzesień", "październik", "listopad", "grudzień"
         ] as Array<String>;
         if (month >= 1 && month <= 12) {
             return months[month - 1];
