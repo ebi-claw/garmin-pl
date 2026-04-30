@@ -3,7 +3,6 @@
     <iq:application
         entry="PolishClockApp"
         id="a3b4c5d6-e7f8-1234-abcd-ef0123456789"
-        launcherIcon="@Drawables.LauncherIcon"
         minSdkVersion="3.4.0"
         name="@Strings.AppName"
         type="watchface"
