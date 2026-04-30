@@ -1,16 +1,15 @@
+import Toybox.ActivityMonitor;
 import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.System;
 import Toybox.Time;
 import Toybox.Time.Gregorian;
 import Toybox.WatchUi;
-import Toybox.SensorHistory;
 
 class PolishClockView extends WatchUi.WatchFace {
 
     // ── Layout constants for 240×240 fenix 6S Pro ─────────────────────────
     private const SCREEN_W  = 240;
-    private const SCREEN_H  = 240;
     private const CENTER_X  = SCREEN_W / 2;
 
     // Y positions (from top)
@@ -110,18 +109,12 @@ class PolishClockView extends WatchUi.WatchFace {
     }
 
     private function _updateHrString() as Void {
-        // SensorHistory is the watch-face-safe HR API
-        if (Toybox has :SensorHistory && SensorHistory has :getHeartRateHistory) {
-            var hrIter = SensorHistory.getHeartRateHistory({:period => 1});
-            if (hrIter != null) {
-                var sample = hrIter.next();
-                if (sample != null && sample.data != null && sample.data != SensorHistory.INVALID_HR_SAMPLE) {
-                    mHrString = sample.data.toString();
-                    return;
-                }
-            }
+        var info = ActivityMonitor.getInfo();
+        if (info != null && info.heartRate != null) {
+            mHrString = info.heartRate.toString();
+        } else {
+            mHrString = "--";
         }
-        mHrString = "--";
     }
 
     private function _drawFrame(dc as Graphics.Dc) as Void {
@@ -166,7 +159,7 @@ class PolishClockView extends WatchUi.WatchFace {
             CENTER_X,
             HR_Y,
             Graphics.FONT_SMALL,
-            "♥ " + mHrString,   // ♥ symbol + value
+            "♥ " + mHrString,
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
     }
