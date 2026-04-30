@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<iq:manifest xmlns:iq="com.garmin.xml.app.v3" version="3">
+    <iq:application
+        entry="PolishClockApp"
+        id="a3b4c5d6-e7f8-1234-abcd-ef0123456789"
+        launcherIcon="@Drawables.LauncherIcon"
+        minSdkVersion="3.4.0"
+        name="@Strings.AppName"
+        type="watchface"
+        version="1.0.0">
+        <iq:products>
+            <iq:product id="fenix6s"/>
+            <iq:product id="fenix6sPro"/>
+        </iq:products>
+        <iq:permissions>
+            <iq:uses-permission id="com.garmin.permission.FIT_CONTRIBUTOR"/>
+        </iq:permissions>
+        <iq:languages>
+            <iq:language>pol</iq:language>
+            <iq:language>eng</iq:language>
+        </iq:languages>
+    </iq:application>
+</iq:manifest>

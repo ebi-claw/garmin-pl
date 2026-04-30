@@ -1,0 +1,3 @@
+<layout id="WatchFace">
+    <!-- No static labels; everything drawn in onUpdate / onPartialUpdate -->
+</layout>
