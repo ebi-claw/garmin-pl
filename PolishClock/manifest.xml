@@ -12,9 +12,6 @@
             <iq:product id="fenix6s"/>
             <iq:product id="fenix6spro"/>
         </iq:products>
-        <iq:permissions>
-            <iq:uses-permission id="com.garmin.permission.SENSOR_HISTORY"/>
-        </iq:permissions>
         <iq:languages>
             <iq:language>pol</iq:language>
             <iq:language>eng</iq:language>
