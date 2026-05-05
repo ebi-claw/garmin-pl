@@ -13,8 +13,8 @@ class PolishClockView extends WatchUi.WatchFace {
     private const CENTER_X  = SCREEN_W / 2;
 
     // Y positions (from top)
-    private const DATE_Y    = 70;   // centre of date line
-    private const MARQUEE_Y = 120;  // centre of scrolling time text
+    private const DATE_Y    = 78;   // centre of date line
+    private const MARQUEE_Y = 114;  // centre of scrolling time text
 
     // Marquee scroll speed: 240px / 5s = 48 px per second
     private const SCROLL_SPEED = 48;
@@ -99,7 +99,7 @@ class PolishClockView extends WatchUi.WatchFace {
         dc.clear();
 
         // Date line
-        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             CENTER_X,
             DATE_Y,
@@ -109,12 +109,12 @@ class PolishClockView extends WatchUi.WatchFace {
         );
 
         // Separator lines
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawLine(20, DATE_Y + 22, SCREEN_W - 20, DATE_Y + 22);
-        dc.drawLine(20, MARQUEE_Y + 22, SCREEN_W - 20, MARQUEE_Y + 22);
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawLine(20, DATE_Y + 14, SCREEN_W - 20, DATE_Y + 14);
+        dc.drawLine(20, MARQUEE_Y + 14, SCREEN_W - 20, MARQUEE_Y + 14);
 
         // Marquee — clipped to its strip
-        dc.setClip(0, MARQUEE_Y - 26, SCREEN_W, 52);
+        dc.setClip(0, MARQUEE_Y - 20, SCREEN_W, 40);
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             mScrollX.toNumber(),
